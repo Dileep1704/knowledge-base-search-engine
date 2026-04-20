@@ -1,0 +1,35 @@
+# Artificial Intelligence Overview
+
+## What is Artificial Intelligence?
+
+Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn. The term was coined by John McCarthy in 1956 at the Dartmouth Conference.
+
+## Key Branches of AI
+
+### Machine Learning
+Machine learning is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed. It focuses on developing computer programs that can access data and use it to learn for themselves.
+
+### Deep Learning
+Deep learning is a subset of machine learning that uses neural networks with many layers (hence "deep") to analyze various factors of data. It has been particularly successful in areas such as image recognition, speech recognition, and natural language processing.
+
+### Natural Language Processing (NLP)
+NLP enables computers to understand, interpret, and generate human language. Applications include chatbots, language translation, sentiment analysis, and document summarization.
+
+## Applications of AI
+
+1. **Healthcare**: Disease diagnosis, drug discovery, personalized medicine
+2. **Finance**: Fraud detection, algorithmic trading, credit scoring
+3. **Transportation**: Self-driving cars, route optimization, traffic management
+4. **Education**: Personalized learning, automated grading, intelligent tutoring systems
+5. **Retail**: Product recommendations, inventory management, customer service
+
+## Challenges in AI
+
+- **Bias and Fairness**: AI systems can inherit biases present in training data
+- **Explainability**: Many AI models operate as "black boxes"
+- **Data Privacy**: AI systems require large amounts of data, raising privacy concerns
+- **Job Displacement**: Automation may replace certain categories of jobs
+
+## The Future of AI
+
+Experts predict that AI will continue to advance rapidly, with general AI (AGI) potentially being developed within the next few decades. This could fundamentally transform society, economy, and human civilization.

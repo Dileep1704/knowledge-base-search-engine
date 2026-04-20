@@ -1,0 +1,52 @@
+# Climate Change: Causes, Effects, and Solutions
+
+## Overview
+
+Climate change refers to long-term shifts in global temperatures and weather patterns. While some climate change is natural, since the mid-20th century human activities have been the primary driver of climate change.
+
+## Primary Causes
+
+### Greenhouse Gas Emissions
+- **Carbon Dioxide (CO2)**: Released by burning fossil fuels (coal, oil, natural gas) and deforestation
+- **Methane (CH4)**: Produced by livestock, rice paddies, and landfills
+- **Nitrous Oxide (N2O)**: Emitted from agricultural soils and fertilizers
+
+### Deforestation
+Forests absorb CO2. When they are cut down, not only is this carbon sink lost, but the stored carbon is released back into the atmosphere.
+
+## Key Effects
+
+### Rising Temperatures
+The global average temperature has risen by approximately 1.1°C since the pre-industrial period. Without action, it could rise by 3–4°C by 2100.
+
+### Sea Level Rise
+Melting polar ice and thermal expansion of oceans are causing sea levels to rise. Low-lying areas and island nations face existential threats.
+
+### Extreme Weather Events
+Increased frequency and intensity of:
+- Hurricanes and typhoons
+- Droughts and heatwaves
+- Flooding and storms
+
+### Biodiversity Loss
+Many species cannot adapt quickly enough to changing conditions, leading to extinction and ecosystem collapse.
+
+## Solutions
+
+### Renewable Energy
+Transitioning from fossil fuels to solar, wind, and hydroelectric power is the single most impactful solution.
+
+### Energy Efficiency
+Improving insulation, electric vehicles, and efficient appliances can significantly reduce emissions.
+
+### Carbon Capture
+Technologies that remove CO2 directly from the atmosphere are being developed and deployed.
+
+### Policy Measures
+- Carbon pricing and taxes
+- International agreements (e.g., Paris Agreement)
+- Renewable energy subsidies
+
+## The Paris Agreement
+
+Adopted in 2015, the Paris Agreement commits nations to limit global warming to well below 2°C above pre-industrial levels, with efforts to limit it to 1.5°C.

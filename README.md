@@ -194,3 +194,10 @@ If the answer is not found, say so clearly."
 - **Google Gemini API** — LLM for answer generation  
 - [FastAPI](https://fastapi.tiangolo.com/) — Backend API framework  
 - Vanilla HTML/CSS/JavaScript — Zero-dependency frontend  
+## 📸 Demo
+
+### 🖥️ Application Output
+
+![Demo Screenshot](demo.png)
+
+> Upload documents → Ask questions → Get intelligent answers using Gemini-powered RAG.

@@ -58,11 +58,6 @@ User Query
 
 ## 🚀 Quick Start
 
-
----
-
-## 🚀 Quick Start
-
 #### Prerequisites
 - Python 3.9+
 - Gemini API Key from Google AI Studio
@@ -91,10 +86,9 @@ http://localhost:8000
 🖥️ Run Frontend
 Open:
 frontend/index.html
-
+```
 ## 📁 Project Structure
 
-```
 knowledge-base-search-engine/
 ├── frontend/
 │   └── index.html          # Complete UI — drag & drop upload, chat interface
@@ -105,7 +99,6 @@ knowledge-base-search-engine/
 │   ├── artificial_intelligence.txt
 │   └── climate_change.txt
 └── README.md
-```
 
 ```
 ## 🔌 API Endpoints

@@ -88,7 +88,7 @@ Open:
 frontend/index.html
 ```
 ## 📁 Project Structure
-
+```
 knowledge-base-search-engine/
 ├── frontend/
 │   └── index.html          # Complete UI — drag & drop upload, chat interface
@@ -99,7 +99,7 @@ knowledge-base-search-engine/
 │   ├── artificial_intelligence.txt
 │   └── climate_change.txt
 └── README.md
-
+```
 ```
 ## 🔌 API Endpoints
 

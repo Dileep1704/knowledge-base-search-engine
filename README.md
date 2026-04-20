@@ -1,6 +1,6 @@
-# 🔍 Knowledge Base Search Engine
+# Knowledge Base Search Engine
 
-A **Retrieval-Augmented Generation (RAG)** powered knowledge base search engine that lets you upload documents and ask natural language questions — getting synthesized, cited answers from Claude (Anthropic).
+A **Retrieval-Augmented Generation (RAG)** powered knowledge base search engine that lets you upload documents and ask natural language questions — getting synthesized, cited answers using **Google Gemini**.
 
 ---
 
@@ -9,7 +9,14 @@ A **Retrieval-Augmented Generation (RAG)** powered knowledge base search engine 
 > Upload `.txt`, `.md`, `.pdf`, `.csv`, or `.json` files → Ask questions → Get LLM-synthesized answers with source attribution.
 
 ---
+### 🧠 Example Output
 
+- Summarizes multiple documents
+- Identifies key topics
+- Extracts conclusions
+- Detects contradictions
+
+---
 ## 🏗️ Architecture
 
 ```
@@ -23,28 +30,27 @@ User Query
          │ HTTP / Direct API
          ▼
 ┌─────────────────┐
-│  Backend API    │  ← FastAPI (Python) — optional
+│  Backend API    │  ← FastAPI (Python) 
 │  (server.py)    │
 └────────┬────────┘
          │
          ▼
 ┌─────────────────────────────────────────┐
-│         RAG Pipeline                    │
-│                                         │
-│  1. RETRIEVAL: Score & rank documents   │
-│     by query relevance                  │
-│                                         │
-│  2. AUGMENTATION: Inject top-k chunks   │
-│     into LLM system prompt             │
-│                                         │
-│  3. GENERATION: Claude synthesizes      │
-│     answer from document context        │
+│        RAG Pipeline                     |
+│                                         |
+│ 1. RETRIEVAL: Rank documents            |
+│    using keyword matching               |
+│                                         |
+│ 2. AUGMENTATION: Inject context         |
+│         into prompt                     |
+│                                         |
+│ 3. GENERATION: Gemini generates         |
+│      answer from context                │  
 └────────┬────────────────────────────────┘
          │
          ▼
 ┌─────────────────┐
-│  Anthropic API  │  ← claude-sonnet-4-20250514
-│  (Claude LLM)   │
+│  Gemini API     │  ← gemini-2.5-flash
 └─────────────────┘
 ```
 
@@ -52,41 +58,39 @@ User Query
 
 ## 🚀 Quick Start
 
-### Option A: Frontend Only (No Setup Required)
 
-1. Open `frontend/index.html` in your browser
-2. Enter your [Anthropic API key](https://console.anthropic.com/)
-3. Upload documents from `sample-docs/` or your own files
-4. Ask questions!
+---
 
-### Option B: Full Stack (Frontend + Backend API)
+## 🚀 Quick Start
 
 #### Prerequisites
 - Python 3.9+
-- Anthropic API key from [console.anthropic.com](https://console.anthropic.com/)
+- Gemini API Key from Google AI Studio
 
-#### Setup
+---
+
+### ⚙️ Setup
 
 ```bash
-# Clone the repo
+# Clone repo
 git clone https://github.com/yourusername/knowledge-base-search-engine
 cd knowledge-base-search-engine
 
-# Install backend dependencies
+# Install dependencies
 cd backend
 pip install -r requirements.txt
 
-# Set your API key
-export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+# Set Gemini API key
+export GEMINI_API_KEY="your-key-here"
 
-# Start the backend server
+# Run server
 python server.py
-# Server runs at http://localhost:8000
-```
+👉 Server runs at:
+http://localhost:8000
 
-Open `frontend/index.html` in your browser. The frontend can work standalone (direct API) or connect to the backend.
-
----
+🖥️ Run Frontend
+Open:
+frontend/index.html
 
 ## 📁 Project Structure
 
@@ -103,17 +107,16 @@ knowledge-base-search-engine/
 └── README.md
 ```
 
----
-
+```
 ## 🔌 API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/ingest` | Upload a document |
-| `GET` | `/documents` | List all documents |
-| `DELETE` | `/documents/{name}` | Remove a document |
 | `POST` | `/query` | Ask a question (RAG query) |
 | `GET` | `/health` | Health check |
+| `GET` | `/test-gemini` | Test Gemini connection |
+| `GET` | `/list-models` | List available models |
 
 ### Example: Query via cURL
 
@@ -132,9 +135,9 @@ curl -X POST http://localhost:8000/query \
 
 ```json
 {
-  "answer": "According to the AI overview document, the main applications of AI include: Healthcare (disease diagnosis, drug discovery), Finance (fraud detection, algorithmic trading), Transportation (self-driving cars), Education (personalized learning), and Retail (product recommendations).",
-  "sources": ["artificial_intelligence.txt"],
-  "model": "claude-sonnet-4-20250514"
+  "answer": "The provided documents discuss Artificial Intelligence and Climate Change. AI applications include healthcare, finance, transportation, education, and retail.",
+  "sources": ["artificial_intelligence.txt", "climate_change.txt"],
+  "model": "models/gemini-2.5-flash"
 }
 ```
 
@@ -144,18 +147,20 @@ curl -X POST http://localhost:8000/query \
 
 ### Retrieval
 The current implementation uses **keyword frequency scoring** to rank documents by relevance to the query. For production use, upgrade to:
-- **Embeddings**: Use `text-embedding-3-small` (OpenAI) or similar to embed chunks
+- **Embeddings**: Use Gemini embeddings or other embedding models to embed document chunks
 - **Vector Store**: Store embeddings in [Chroma](https://www.trychroma.com/), [Pinecone](https://www.pinecone.io/), or [Weaviate](https://weaviate.io/)
-- **Semantic Search**: Retrieve top-k chunks by cosine similarity
+- **Semantic Search**: Retrieve top-k chunks using similarity search (e.g., cosine similarity)
 
 ### Augmentation
-Top-k retrieved document chunks (up to 8,000 chars each) are injected into Claude's system prompt.
+Top-k retrieved document chunks are injected into the Gemini prompt as context before generating the answer.
 
 ### Generation (LLM Prompt)
 ```
-"You are a precise knowledge-base search assistant using RAG. 
-Answer the user's question using ONLY the provided document context. 
-Be concise but thorough. Always mention which document(s) you drew from."
+"You are a precise knowledge-base search assistant using RAG.
+Answer the user's question using ONLY the provided document context.
+Be concise but thorough.
+Mention which document(s) you used.
+If the answer is not found, say so clearly."
 ```
 
 ---
@@ -174,8 +179,8 @@ Be concise but thorough. Always mention which document(s) you drew from."
 
 ## 🔐 API Key Security
 
-- **Frontend mode**: Key is entered in the UI and stored in memory only — never persisted
-- **Backend mode**: Key is loaded from the `ANTHROPIC_API_KEY` environment variable — never exposed to the frontend
+- **Frontend mode**: No API key is required in the UI (handled via backend)
+- **Backend mode**: API key is loaded from the `GEMINI_API_KEY` environment variable — never exposed to the frontend
 
 ---
 
@@ -191,14 +196,8 @@ Be concise but thorough. Always mention which document(s) you drew from."
 
 ---
 
-## 📝 License
-
-MIT License — free to use and modify.
-
----
-
 ## 🙏 Built With
 
-- [Anthropic Claude](https://anthropic.com) — LLM for answer synthesis
-- [FastAPI](https://fastapi.tiangolo.com/) — Backend API framework
-- Vanilla HTML/CSS/JS — Zero-dependency frontend
+- **Google Gemini API** — LLM for answer generation  
+- [FastAPI](https://fastapi.tiangolo.com/) — Backend API framework  
+- Vanilla HTML/CSS/JavaScript — Zero-dependency frontend  

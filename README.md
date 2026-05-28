@@ -201,3 +201,4 @@ If the answer is not found, say so clearly."
 ![Demo Screenshot](demo.png)
 
 > Upload documents → Ask questions → Get intelligent answers using Gemini-powered RAG.
+##Thank you
